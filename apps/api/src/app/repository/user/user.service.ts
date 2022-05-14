@@ -2,12 +2,12 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { UserDTO } from "./user.dto";
-import { iUser, USER_SCHEMA_NAME } from "./user.schema";
+import { IUser, USER_SCHEMA_NAME } from "./user.schema";
 
 @Injectable()
 export class UserRepository {
     constructor(
-        @InjectModel(USER_SCHEMA_NAME) private readonly model: Model<iUser>
+        @InjectModel(USER_SCHEMA_NAME) private readonly model: Model<IUser>
     ){};
 
     async getUsers(){

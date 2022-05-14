@@ -6,4 +6,4 @@ export const UserSchema = SchemaFactory.createForClass(UserDTO);
 
 export const USER_SCHEMA_NAME = 'user';
 
-export type iUser = UserDTO & Document;
+export type IUser = UserDTO & Document;

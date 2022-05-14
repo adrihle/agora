@@ -14,7 +14,20 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "#constants": ["apps/api/src/app/constants"],
+      "#endpoints/*": ["apps/api/src/app/endpoints/*"],
+      "#modules": ["apps/api/src/app/modules"],
+      "#repository": ["apps/api/src/app/repository"],
+      "#utils": ["apps/api/src/app/utils"],
+      "@components": ["apps/client/src/app/components"],
+      "@containers": ["apps/client/src/app/containers"],
+      "@pages": ["apps/client/src/app/pages"],
+      "@providers": ["apps/client/src/app/providers"],
+      "@styles": ["apps/client/src/app/styles"],
+      "@interfaces": ["apps/client/src/app/interfaces"],
+      "@stores": ["apps/client/src/app/stores"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { scrypt } from "crypto";
-import { UserRepository } from "../../../repository/user";
+import { UserRepository } from "#repository";
 import { SigninDTO } from "../dto/signin.dto";
 import { SignupDTO } from "../dto/signup.dto";
 
