@@ -7,7 +7,7 @@ const { TabPane } = Tabs;
 
 export const AuthPqge: React.FC = () => {
     return (
-        <Tabs centered>
+        <Tabs centered animated>
             <TabPane key={'SIGNIN'} tab={<div><LoginOutlined/>{T.AUTH.SIGNIN.TAB_TITLE}</div>}>
                 <SigninContainer />
             </TabPane>
