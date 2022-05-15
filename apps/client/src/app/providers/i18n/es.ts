@@ -18,7 +18,9 @@ const language = {
       },
       PASSWORD: {
         LABEL: 'Password',
-        ERROR_EMPTY: 'Password is mandatory field'
+        LABEL_CONFIRM: 'Confirm Password',
+        ERROR_EMPTY: 'Password is mandatory field',
+        ERROR_CONFIRM: 'Passwords must match'
       },
     }
   }
