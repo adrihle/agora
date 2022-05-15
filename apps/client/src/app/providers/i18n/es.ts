@@ -11,6 +11,10 @@ const language = {
   },
   COMPONENTS: {
     INPUTS: {
+      NAME: {
+        LABEL: 'Nombre',
+        ERROR_EMPTY: 'Name is mandatory field'
+      },
       EMAIL: {
         LABEL: 'Email',
         ERROR_WRONG: 'Email must have email format',
