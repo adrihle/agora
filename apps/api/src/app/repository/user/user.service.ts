@@ -25,7 +25,7 @@ export class UserRepository {
     async createUser(user: UserDTO){
         const newUser = new this.model(user);
         await newUser.save();
-        return newUser;
+        return this.getUserById(newUser._id);
     };
 
     async updateUser(id: string, user: UserDTO){
