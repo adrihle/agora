@@ -20,6 +20,7 @@
       "#modules": ["apps/api/src/app/modules"],
       "#repository": ["apps/api/src/app/repository"],
       "#utils": ["apps/api/src/app/utils"],
+      "#interceptors": ["apps/api/src/app/interceptors"],
       "@components": ["apps/client/src/app/components"],
       "@containers": ["apps/client/src/app/containers"],
       "@pages": ["apps/client/src/app/pages"],

@@ -4,7 +4,7 @@ import { IsDefined, IsString } from "class-validator";
 import { UserDTO } from "../../../repository/user";
 import { encryptPassword } from "../../../utils/encryptPassword.util";
 
-export class SignupDTO extends OmitType(UserDTO, ['password', 'id']) {
+export class SignupDTO extends OmitType(UserDTO, ['password', '_id']) {
     @IsString()
     @IsDefined()
     @ApiProperty({ type: String, example: '12345678' })

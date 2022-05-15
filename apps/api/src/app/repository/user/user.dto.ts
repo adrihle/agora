@@ -8,7 +8,7 @@ export class UserDTO {
     @IsMongoId()
     @IsOptional()
     @ApiProperty({ type: String, example: '627eaec33f297ef15ce36f5f' })
-    id?: string;
+    _id?: string;
 
     @IsString()
     @IsDefined()
@@ -24,7 +24,7 @@ export class UserDTO {
 
     @IsString()
     @IsOptional()
-    @Exclude({})
+    @Exclude()
     @Prop({ type: String, required: true })
     password: string;
 
