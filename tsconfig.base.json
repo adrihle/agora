@@ -26,7 +26,8 @@
       "@providers": ["apps/client/src/app/providers"],
       "@styles": ["apps/client/src/app/styles"],
       "@interfaces": ["apps/client/src/app/interfaces"],
-      "@stores": ["apps/client/src/app/stores"]
+      "@stores": ["apps/client/src/app/stores"],
+      "@utils": ["apps/client/src/app/utils"]
     }
   },
   "exclude": ["node_modules", "tmp"]

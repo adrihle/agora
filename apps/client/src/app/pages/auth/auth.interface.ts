@@ -5,4 +5,5 @@ export interface ISignin {
 
 export interface ISignup extends ISignin {
     name: string;
+    image?: string;
 }
