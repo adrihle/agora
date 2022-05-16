@@ -3,8 +3,11 @@ import { Navigation } from './containers';
 import { AuthPqge, HomePage } from './pages';
 import { AppWrapper } from './app.style';
 import './app.style.css';
+import { useApp } from './app.hook';
 
 export function App() {
+  useApp();
+  
   return (
     <AppWrapper>
       <BrowserRouter>

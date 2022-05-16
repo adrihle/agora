@@ -3,7 +3,8 @@ import { GetState, SetState } from 'zustand';
 
 export interface IStore {
     user?: IUser,
-    init: (user: IUser) => void;
+    setUser: (user: IUser) => void;
+    init: () => void;
 };
 
 export type ISet = SetState<IStore>;

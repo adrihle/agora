@@ -14,7 +14,7 @@ export class SigninDTO {
     password: string;
 };
 
-export class SIgninResponseDTO {
+export class SignResponseDTO {
     user: UserDTO;
 
     @IsJWT()

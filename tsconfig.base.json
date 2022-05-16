@@ -21,6 +21,7 @@
       "#repository": ["apps/api/src/app/repository"],
       "#utils": ["apps/api/src/app/utils"],
       "#interceptors": ["apps/api/src/app/interceptors"],
+      "#decorators": ["apps/api/src/app/decorators"],
       "@components": ["apps/client/src/app/components"],
       "@containers": ["apps/client/src/app/containers"],
       "@pages": ["apps/client/src/app/pages"],
@@ -28,7 +29,8 @@
       "@styles": ["apps/client/src/app/styles"],
       "@interfaces": ["apps/client/src/app/interfaces"],
       "@stores": ["apps/client/src/app/stores"],
-      "@utils": ["apps/client/src/app/utils"]
+      "@utils": ["apps/client/src/app/utils"],
+      "@hooks": ["apps/client/src/app/hooks"]
     }
   },
   "exclude": ["node_modules", "tmp"]

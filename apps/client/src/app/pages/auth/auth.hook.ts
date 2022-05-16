@@ -9,29 +9,30 @@ import { useNavigate } from "react-router-dom";
 export const useAuth = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [image, setImage] = useState<RcFile>();
-    const setUser = useUser(state => state.init);
+    const setUser = useUser(state => state.setUser);
     const navigate = useNavigate();
 
-    const onSignin = async (data: ISignin) => {
+    const onSignin = async (signin: ISignin) => {
         setIsLoading(true);
-        const resp = await AuthService.signin(data);
+        const {status, data } = await AuthService.signin(signin);
         setIsLoading(false);
-        if (!resp || resp?.status !== 200) return;
-        setUser(resp.data);
+        if (!data || status !== 200) return;
+        const { user, token } = data;
+        setUser(user);
         navigate('/')
     }
 
-    const onSignup = async (data: ISignup) => {
+    const onSignup = async (signup: ISignup) => {
         setIsLoading(true);
-        const submitData: ISignup = {...data};
+        const submitData: ISignup = {...signup};
         if (image){
             const url = await uploadImage(image, 'users');
             if (url) submitData['image'] = url;
         }
-        const resp = await AuthService.signup(submitData);
+        const {status, data} = await AuthService.signup(submitData);
         setIsLoading(false);
-        if (!resp || resp?.status !== 200) return;
-        setUser(resp.data);
+        if (!data || status !== 200) return;
+        setUser(data.user);
         setImage(undefined);
         navigate('/')
     }

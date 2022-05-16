@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { scrypt } from "crypto";
 import { UserDTO, UserRepository } from "#repository";
-import { SigninDTO, SIgninResponseDTO } from "../dto/signin.dto";
+import { SigninDTO, SignResponseDTO } from "../dto/signin.dto";
 import { SignupDTO } from "../dto/signup.dto";
 import { plainToClass } from "class-transformer";
 import { JwtService } from "@nestjs/jwt";
@@ -17,22 +17,24 @@ export class AuthService {
         private readonly jwtService: JwtService
     ){}
 
-    async signin(signin: SigninDTO): Promise<SIgninResponseDTO>{
+    async signin(signin: SigninDTO): Promise<SignResponseDTO>{
         const { email, password } = signin;
         const user = await this.userRepository.getUserByEmail(email);
         if (!user) throw new NotFoundException(`User related to ${email} not found`);
         const isAunthenticated = await this.checkPassword(password, user.password);
         if (!isAunthenticated) throw new BadRequestException('Password is wrong');
-        return {
-            user: plainToClass(UserDTO, {...user, _id: String(user._id)}),
-            token: await this.createToken(user)
-        };
+        return this.generateAuthResponse(user);
     };
 
-    async signup(signup: SignupDTO){
+    async signup(signup: SignupDTO): Promise<SignResponseDTO>{
         const user = await this.userRepository.createUser(signup);
-        return plainToClass(UserDTO, {...user, _id: String(user._id)});
+        return this.generateAuthResponse(user);
     };
+
+    async refresh(userId: string){
+        const user = await this.userRepository.getUserById(userId);
+        return this.generateAuthResponse(user);
+    }
 
     async createToken(user: UserDTO){
         const payload =  {userName: user.name, userId: user._id};
@@ -48,6 +50,13 @@ export class AuthService {
         const token = ExtractJwt.fromAuthHeaderAsBearerToken()(req);
         return this.decodeToken(token);
     }
+
+    private async generateAuthResponse(user: UserDTO): Promise<SignResponseDTO> {
+        return {
+            user: plainToClass(UserDTO, {...user, _id: String(user._id)}),
+            token: await this.createToken(user)
+        };
+    } 
 
     private async checkPassword(password: string, storedPassword: string): Promise<boolean> {
         return new Promise(resolve => {
