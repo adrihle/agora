@@ -4,6 +4,8 @@ import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 const BASE_URL = 'http://localhost:3333/api';
 export abstract class HttpService {
     protected readonly http: AxiosInstance;
+    public controller: AbortController;
+    public requestingUrl = '';
 
     constructor(
         private readonly path?: string,
@@ -13,18 +15,30 @@ export abstract class HttpService {
             baseURL: this.path ? `${BASE_URL}${this.path}` : BASE_URL
         });
 
+        this.controller = new AbortController();
+
         this.http.interceptors.request.use(
             req => {
+                if (this.requestingUrl === req.url){
+                  this.requestingUrl = '';
+                  this.controller.abort();
+                  this.controller = new AbortController();
+                }
                 const token = localStorage.getItem('token');
                 if (req.headers){
                   req.headers['Authorization'] = `Bearer ${token}`;
                 }
-                return req;
+                this.requestingUrl = req.url ?? '';
+                return {
+                  ...req,
+                  signal: this.controller.signal
+                };
             }
         );
 
         this.http.interceptors.response.use(
             res => {
+                this.requestingUrl = '';
                 const isAuthUrl = res.config.baseURL?.includes('auth');
                 if (isAuthUrl){
                   const token = res.data.token;
@@ -33,6 +47,7 @@ export abstract class HttpService {
                 return { status: res.status, data: res.data };
             },
             err => {
+              this.requestingUrl = '';
               if (err instanceof AxiosError && !this.silent){
                 message.error(err.response?.data?.message)
               }
