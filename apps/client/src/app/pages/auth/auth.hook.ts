@@ -4,11 +4,13 @@ import { ISignin, ISignup } from "./auth.interface";
 import { AuthService } from "./auth.service";
 import { uploadImage } from "@providers";
 import { RcFile, UploadChangeParam } from "antd/lib/upload";
+import { useNavigate } from "react-router-dom";
 
 export const useAuth = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [image, setImage] = useState<RcFile>();
     const setUser = useUser(state => state.init);
+    const navigate = useNavigate();
 
     const onSignin = async (data: ISignin) => {
         setIsLoading(true);
@@ -16,6 +18,7 @@ export const useAuth = () => {
         setIsLoading(false);
         if (!resp || resp?.status !== 200) return;
         setUser(resp.data);
+        navigate('/')
     }
 
     const onSignup = async (data: ISignup) => {
@@ -30,6 +33,7 @@ export const useAuth = () => {
         if (!resp || resp?.status !== 200) return;
         setUser(resp.data);
         setImage(undefined);
+        navigate('/')
     }
 
     const onChangeImage = async (img: UploadChangeParam) => {
