@@ -8,7 +8,8 @@ import { ISignResponse } from "../../pages/auth/auth.interface";
 const state: StateCreator<IStore> = (set, get) => ({
     user: undefined,
     setUser: (user) => setUser(user, set),
-    init: () => init(set, get)
+    init: () => init(set, get),
+    clear: () => set({ user: undefined })
 });
 
 const setUser = (user: IUser, set: ISet) => {

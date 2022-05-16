@@ -5,6 +5,7 @@ export interface IStore {
     user?: IUser,
     setUser: (user: IUser) => void;
     init: () => void;
+    clear: () => void;
 };
 
 export type ISet = SetState<IStore>;

@@ -17,3 +17,5 @@ export const AuthPqge: React.FC = () => {
         </Tabs>
     )
 };
+
+export default AuthPqge;

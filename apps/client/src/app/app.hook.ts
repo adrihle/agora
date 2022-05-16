@@ -2,11 +2,13 @@ import { useEffect } from "react"
 import { useUser } from "@stores";
 
 export const useApp = () => {
-    const init = useUser(state => state.init);
+    const {init, user} = useUser();
 
     useEffect(() => {
         init();
     }, []);
-    
-    return {}
+
+    return {
+        isAunthenticated: !!user
+    }
 }
