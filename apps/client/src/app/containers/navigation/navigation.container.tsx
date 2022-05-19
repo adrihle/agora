@@ -1,24 +1,31 @@
-import {NavLink, useNavigate} from 'react-router-dom';
+import { useLocation, useNavigate} from 'react-router-dom';
 import { useUser } from '@stores';
-import { Avatar } from 'antd';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import { Avatar, Button } from 'antd';
+import { Wrapper } from './navigation.styles';
 
 export const Navigation: React.FC = () => {
     const {user, clear} = useUser();
     const navigate = useNavigate();
-
-    const onClick = () => {
-        localStorage.removeItem('token');
-        clear();
-        navigate('auth');
-    }
+    const location = useLocation();
 
     return (
         <nav>
             {user && (
-                <section style={{display: 'flex', alignItems: 'center'}} onClick={onClick}>
-                    <Avatar src={user.image} size={50} />
-                    <div style={{marginLeft: '15px'}}>{user.name}</div>
-                </section>
+                <Wrapper>
+                    {location.pathname !== '/' && (
+                        <Button 
+                            type='link' 
+                            icon={<ArrowLeftOutlined />} 
+                            size='large' 
+                            onClick={() => navigate(-1)}
+                        />
+                    )}
+                    <div>
+                        <Avatar src={user.image} size={50} />
+                        <div>{user.name}</div>
+                    </div>
+                </Wrapper>
             )}
         </nav>
     )

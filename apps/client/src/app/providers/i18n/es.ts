@@ -26,6 +26,14 @@ const language = {
         ERROR_EMPTY: 'Password is mandatory field',
         ERROR_CONFIRM: 'Passwords must match'
       },
+      TITLE: {
+        LABEL: 'Título',
+        ERROR_EMPTY: 'Title is mandatory field',
+      },
+      CONTENT: {
+        LABEL: 'Content',
+        ERROR_EMPTY: 'Content is mandatory field'
+      }
     }
   }
 };

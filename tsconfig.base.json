@@ -30,7 +30,8 @@
       "@interfaces": ["apps/client/src/app/interfaces"],
       "@stores": ["apps/client/src/app/stores"],
       "@utils": ["apps/client/src/app/utils"],
-      "@hooks": ["apps/client/src/app/hooks"]
+      "@hooks": ["apps/client/src/app/hooks"],
+      "@routes": ["apps/client/src/app/routes"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -9,18 +9,24 @@ interface Route {
 }
 
 const LazyHome = lazy(() => import('../pages/home/home.page'));
-const LazyAuth = lazy( () => import('../pages/auth/auth.page'));
+const LazyAuth = lazy(() => import('../pages/auth/auth.page'));
+const LazyPost = lazy(() => import('../pages/post/post.page'));
 
 
 export const routes: Route[] = [
     {
         path: '/',
         component: LazyHome,
-        name: 'Home'
+        name: 'Home' 
     },
     {
         path: '/auth',
         component: LazyAuth,
         name: 'Auth'
     },
+    {
+        path: '/post',
+        component: LazyPost,
+        name: 'Post'
+    }
 ]

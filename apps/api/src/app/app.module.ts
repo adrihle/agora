@@ -6,7 +6,7 @@ import { EndpointsModule } from "./endpoints/endpoints.module";
 @Module({
     imports: [
         ConfigModule.forRoot(),
-        MongooseModule.forRoot(process.env.DB_CHAIN),
+        MongooseModule.forRoot(process.env.NX_DB_CHAIN),
         EndpointsModule
     ]
 })

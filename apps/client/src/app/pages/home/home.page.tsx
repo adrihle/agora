@@ -1,4 +1,5 @@
 import { Button } from "antd";
+import { FloatingButtonComponent } from "./components";
 import { HomeService } from "./home.service";
 
 export const HomePage: React.FC = () => {
@@ -18,6 +19,7 @@ export const HomePage: React.FC = () => {
             <h1>home page</h1>
             <Button onClick={onClick}>get</Button>
             <Button onClick={onClickPost}>post</Button>
+            <FloatingButtonComponent />
         </section>
     )
 }
