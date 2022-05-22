@@ -4,6 +4,7 @@ import { IGet, ISet, IStore } from "./user.interfaces";
 import { IUser } from '@interfaces';
 import { fetcher } from "@providers";
 import { ISignResponse } from "../../pages/auth/auth.interface";
+import React from "react";
 
 const state: StateCreator<IStore> = (set, get) => ({
     user: undefined,
@@ -19,10 +20,11 @@ const setUser = (user: IUser, set: ISet) => {
 
 const init = async (set: ISet, get: IGet) => {
     const user = get().user;
-    if (user) return;
+    if (user) return true;
     const {status, data} = await fetcher<ISignResponse>('/auth');
-    if (!data || status !== 200) return;
-    set(() => ({ user: data.user }))
+    if (!data || status !== 200) return false;
+    set(() => ({ user: data.user }));
+    return true;
 }
 
 export const useUser = create(devtools(state, { name: 'User State' }));

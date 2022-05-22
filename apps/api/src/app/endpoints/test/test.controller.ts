@@ -1,27 +1,19 @@
-import { Body, Controller, Get, Post, Req } from "@nestjs/common";
+import { IsPublicEndpoint } from "@agora/modules";
+import { Controller, Get, Inject } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
-import { IsPublicEndpoint } from "#modules";
-import { Request } from 'express';
+import { TestService } from "./test.service";
 
 
 @ApiTags('test')
-// @IsPublicEndpoint()
+@IsPublicEndpoint()
 @Controller('test')
 export class TestController {
 
+    @Inject()
+    private readonly service: TestService;
+
     @Get()
     async get(){
-        console.log('requested test endpoint')
-        return {
-            get: 'algo'
-        };
-    }
-
-    @Post()
-    async post(@Body() body: any, @Req() request: Request){
-        console.log(request.headers)
-        return {
-            post: 'algo'
-        };
+        return this.service.get();
     }
 }

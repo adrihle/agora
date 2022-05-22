@@ -16,22 +16,25 @@
     "baseUrl": ".",
     "paths": {
       "#constants": ["apps/api/src/app/constants"],
+      "#decorators": ["apps/api/src/app/decorators"],
       "#endpoints/*": ["apps/api/src/app/endpoints/*"],
+      "#interceptors": ["apps/api/src/app/interceptors"],
       "#modules": ["apps/api/src/app/modules"],
       "#repository": ["apps/api/src/app/repository"],
       "#utils": ["apps/api/src/app/utils"],
-      "#interceptors": ["apps/api/src/app/interceptors"],
-      "#decorators": ["apps/api/src/app/decorators"],
+      "@agora/modules": ["libs/modules/src/index.ts"],
+      "@agora/repository": ["libs/repository/src/index.ts"],
+      "@agora/resources": ["libs/resources/src/index.ts"],
       "@components": ["apps/client/src/app/components"],
       "@containers": ["apps/client/src/app/containers"],
+      "@hooks": ["apps/client/src/app/hooks"],
+      "@interfaces": ["apps/client/src/app/interfaces"],
       "@pages": ["apps/client/src/app/pages"],
       "@providers": ["apps/client/src/app/providers"],
-      "@styles": ["apps/client/src/app/styles"],
-      "@interfaces": ["apps/client/src/app/interfaces"],
+      "@routes": ["apps/client/src/app/routes"],
       "@stores": ["apps/client/src/app/stores"],
-      "@utils": ["apps/client/src/app/utils"],
-      "@hooks": ["apps/client/src/app/hooks"],
-      "@routes": ["apps/client/src/app/routes"]
+      "@styles": ["apps/client/src/app/styles"],
+      "@utils": ["apps/client/src/app/utils"]
     }
   },
   "exclude": ["node_modules", "tmp"]

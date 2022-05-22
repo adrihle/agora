@@ -1,11 +1,13 @@
+import { AuthModule } from "@agora/modules";
 import { Module } from "@nestjs/common";
-import { AuthModule } from "#modules";
+import { PostModule } from "./post/post.module";
 import { TestModule } from "./test/test.module";
 
 @Module({
     imports: [
         AuthModule,
-        TestModule
+        TestModule,
+        PostModule
     ]
 })
 export class EndpointsModule {}

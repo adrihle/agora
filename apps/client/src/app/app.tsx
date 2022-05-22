@@ -1,19 +1,21 @@
 import { BrowserRouter } from 'react-router-dom';
-import { AuthContainer, Navigation } from '@containers';
+import { Navigation, RouterContainer } from '@containers';
 import { AppWrapper } from './app.style';
 import './app.style.css';
 import { Suspense } from 'react';
+import { AuthProvider } from './contexts/useAuth.context';
 
 export function App() {
-  // const { isAunthenticated } = useApp();
   
   return (
     <AppWrapper>
       <Suspense fallback={<span>Loading...</span>}>
-      <BrowserRouter>
-        <Navigation />
-        <AuthContainer />
-      </BrowserRouter>
+        <AuthProvider>
+          <BrowserRouter>
+            <Navigation />
+            <RouterContainer />
+          </BrowserRouter>
+        </AuthProvider>
       </Suspense>
     </AppWrapper>
   );

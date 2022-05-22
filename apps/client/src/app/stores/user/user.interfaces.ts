@@ -1,10 +1,11 @@
 import { IUser } from "@interfaces";
+import React from "react";
 import { GetState, SetState } from 'zustand';
 
 export interface IStore {
     user?: IUser,
     setUser: (user: IUser) => void;
-    init: () => void;
+    init: () => Promise<boolean>;
     clear: () => void;
 };
 

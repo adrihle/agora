@@ -3,6 +3,9 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
-    "client": "apps/client"
+    "client": "apps/client",
+    "modules": "libs/modules",
+    "repository": "libs/repository",
+    "resources": "libs/resources"
   }
 }
