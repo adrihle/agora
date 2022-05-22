@@ -5,7 +5,7 @@ import { BaseRepository } from "../base.service";
 import { IUser, USER_SCHEMA_NAME } from "./user.schema";
 
 @Injectable()
-export class UserRepository extends BaseRepository<IUser> {
+export class UserRepository extends BaseRepository<IUser, IUser> {
     
     constructor(
         @InjectModel(USER_SCHEMA_NAME)
